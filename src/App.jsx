@@ -47,7 +47,7 @@ function App() {
 
   return (
     <UpdateProducts.Provider value={{ updateProducts }}>
-      <main className="flex justify-between gap-10 max-md:mx-auto max-md:flex-col">
+      <main className="flex justify-between gap-4 max-md:mx-auto max-md:flex-col">
         {products ? (
           <>
             <Products products={products} />
