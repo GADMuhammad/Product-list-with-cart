@@ -70,7 +70,7 @@ export default function Cart({ products }) {
                   transition={{ type: "spring", stiffness: 325 }}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20, transition: { type: "tween" } }}
+                  exit={{ opacity: 0, transition: { type: "tween" } }}
                   key={name}
                   className="border-b-solid grid grid-cols-5 border-b-2 border-b-rose100 pb-2 pr-1"
                 >
