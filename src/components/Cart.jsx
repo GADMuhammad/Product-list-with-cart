@@ -54,40 +54,49 @@ export default function Cart({ products }) {
         )}
       </AnimatePresence>
       <ToastContainer />
-      <section className="h-fit w-[37rem] rounded-xl bg-white px-4 py-5 max-md:w-full max-md:px-4">
+      <motion.section
+        layout
+        className="h-fit w-[37rem] rounded-xl bg-white px-4 py-5 max-md:w-full max-md:px-4"
+      >
         <h2 className="text-2xl font-semibold tracking-wide text-redMain">
           Your Cart ({productsInCart?.length})
         </h2>
 
         {productsInCart?.length ? (
           <>
-            {productsInCart.map(({ name, price, amountOfProductInCart }) => (
-              <div
-                key={name}
-                className="border-b-solid grid animate-opacity grid-cols-5 border-b-2 border-b-rose100 pb-2 pr-1"
-              >
-                <h3 className="col-span-5 mb-1 pt-4 font-medium">{name}</h3>
-                <span className="font-semibold text-redMain">
-                  {amountOfProductInCart}x
-                </span>
-                <span className="text-gray">${price.toFixed(2)}</span>
-                <span className="font-semibold tracking-wide text-gray">
-                  ${(amountOfProductInCart * price).toFixed(2)}
-                </span>
-                <button
-                  onClick={() =>
-                    updateProducts(
-                      "change",
-                      products.findIndex((product) => product.name === name),
-                      0,
-                    )
-                  }
-                  className="col-span-2 my-auto ml-auto"
+            <AnimatePresence>
+              {productsInCart.map(({ name, price, amountOfProductInCart }) => (
+                <motion.div
+                  transition={{ type: "spring", stiffness: 325 }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20, transition: { type: "tween" } }}
+                  key={name}
+                  className="border-b-solid grid grid-cols-5 border-b-2 border-b-rose100 pb-2 pr-1"
                 >
-                  <ion-icon name="close-circle-outline" />
-                </button>
-              </div>
-            ))}
+                  <h3 className="col-span-5 mb-1 pt-4 font-medium">{name}</h3>
+                  <span className="font-semibold text-redMain">
+                    {amountOfProductInCart}x
+                  </span>
+                  <span className="text-gray">${price.toFixed(2)}</span>
+                  <span className="font-semibold tracking-wide text-gray">
+                    ${(amountOfProductInCart * price).toFixed(2)}
+                  </span>
+                  <button
+                    onClick={() =>
+                      updateProducts(
+                        "change",
+                        products.findIndex((product) => product.name === name),
+                        0,
+                      )
+                    }
+                    className="col-span-2 my-auto ml-auto"
+                  >
+                    <ion-icon name="close-circle-outline" />
+                  </button>
+                </motion.div>
+              ))}
+            </AnimatePresence>
             <div className="mt-5 flex justify-between">
               <h6 className="text-gray">Order Total</h6>
               <motion.h3
@@ -132,7 +141,7 @@ export default function Cart({ products }) {
             </p>
           </>
         )}
-      </section>
+      </motion.section>
     </>
   );
 }
