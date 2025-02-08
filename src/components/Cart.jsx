@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Flip, toast, ToastContainer } from "react-toastify";
 
 export default function Cart({ products }) {
-  const productsInCart = products.filter(
+  const productsInCart = products?.filter(
     (product) => product.amountOfProductInCart,
   );
 
@@ -13,7 +13,7 @@ export default function Cart({ products }) {
   const [dialogCase, setDialogCase] = useState(false);
 
   const totalPrice = productsInCart
-    .reduce((acc, cur) => acc + cur.price * cur.amountOfProductInCart, 0)
+    ?.reduce((acc, cur) => acc + cur.price * cur.amountOfProductInCart, 0)
     .toFixed(2);
 
   const notify = () =>
@@ -54,12 +54,12 @@ export default function Cart({ products }) {
         )}
       </AnimatePresence>
       <ToastContainer />
-      <section className="h-fit w-[37rem] rounded-xl bg-white px-4 py-5 max-md:w-[90vw] max-md:px-4">
+      <section className="h-fit w-[37rem] rounded-xl bg-white px-4 py-5 max-md:w-full max-md:px-4">
         <h2 className="text-2xl font-semibold tracking-wide text-redMain">
-          Your Cart ({productsInCart.length})
+          Your Cart ({productsInCart?.length})
         </h2>
 
-        {productsInCart.length ? (
+        {productsInCart?.length ? (
           <>
             {productsInCart.map(({ name, price, amountOfProductInCart }) => (
               <div

@@ -5,19 +5,20 @@ import Cart from "./components/Cart";
 export const UpdateProducts = createContext();
 
 function App() {
+  const allProducts = JSON.parse(localStorage.getItem("productsDetails")) || [];
+  const [products, setProducts] = useState(allProducts);
+
   useEffect(() => {
     if (!localStorage.getItem("productsDetails")) {
       fetch("/data.json")
         .then((response) => response.json())
-        .then((data) =>
-          localStorage.setItem("productsDetails", JSON.stringify(data)),
-        )
+        .then((data) => {
+          localStorage.setItem("productsDetails", JSON.stringify(data));
+          setProducts(data);
+        })
         .catch((error) => console.error("Error:", error)); // to handle errors
     }
   }, []);
-
-  const allProducts = JSON.parse(localStorage.getItem("productsDetails")) || [];
-  const [products, setProducts] = useState(allProducts);
 
   const updateProducts = (action, index, number) => {
     const updatedData = [...allProducts];
@@ -25,7 +26,7 @@ function App() {
     switch (action) {
       case "change":
         {
-          const theClickedProduct = allProducts[index]; // the product I wanna edit
+          const theClickedProduct = updatedData[index]; // the product I wanna edit
           updatedData[index] = {
             ...theClickedProduct,
             amountOfProductInCart: number
@@ -47,7 +48,14 @@ function App() {
   return (
     <UpdateProducts.Provider value={{ updateProducts }}>
       <main className="flex justify-between gap-10 max-md:mx-auto max-md:flex-col">
-        <Products products={products} /> <Cart products={products} />
+        {products ? (
+          <>
+            <Products products={products} />
+            <Cart products={products} />
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
       </main>
     </UpdateProducts.Provider>
   );
