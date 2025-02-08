@@ -8,7 +8,7 @@ function SuccessModal({ productsInCart, handleCloseModal }) {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
-      className="max-one:w-[55vw] max-there:w-[90vw] max-two:w-[70vw] z-10 w-[42vw] select-none overflow-hidden rounded-xl bg-rose50 px-6 py-10 outline-none max-md:px-4 max-sm:w-[98vw]"
+      className="z-10 w-[42vw] select-none overflow-hidden rounded-xl bg-rose50 px-6 py-10 outline-none max-one:w-[55vw] max-two:w-[70vw] max-there:w-[90vw] max-md:px-4 max-sm:w-[98vw]"
       open
     >
       <img src="images/icon-order-confirmed.svg" alt="Order Confirmed Mark" />
@@ -39,7 +39,7 @@ function SuccessModal({ productsInCart, handleCloseModal }) {
             <img
               src={image.thumbnail}
               alt="image thumbnail"
-              className="row-span-2 h-16 w-16"
+              className="row-span-2 h-16 w-16 rounded-xl"
             />
             <h3 className="max-sm: col-span-4 font-medium max-sm:self-center max-sm:justify-self-center">
               {name}
