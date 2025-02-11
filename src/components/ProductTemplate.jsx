@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { UpdateProducts } from "../App";
+import { motion } from "framer-motion";
 
 const styleOfHandleAmountBtn =
   "absolute flex -translate-y-10 left-1/2 -translate-x-1/2 items-center rounded-full py-2 border-2 border-solid hover:border-transparent bg-white text-rose900 transition-colors hover:bg-redMain";
@@ -10,12 +11,20 @@ export default function ProductsTemplate({ product, index }) {
   const { updateProducts } = useContext(UpdateProducts);
 
   return (
-    <div className="relative" name="product">
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: index % 2 === 0 ? -70 : 70 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ type: "spring" }}
+      className="relative"
+      name="product"
+    >
       <figure
         className={`mb-4 overflow-hidden rounded-xl border-2 border-solid transition-colors duration-1000 ${amountOfProductInCart ? "border-redMain" : "border-transparent"}`}
       >
         <img
-          className="transition-transform duration-1000 hover:scale-110"
+          className="hover:scale-115 transition-transform duration-1000"
           src={
             window.innerWidth <= 768
               ? image.mobile
@@ -56,6 +65,6 @@ export default function ProductsTemplate({ product, index }) {
       <h6 className="text-gray">{category}</h6>
       <h2 className="text-xl font-semibold text-rose900">{name}</h2>
       <p className="font-semibold text-redMain">${price.toFixed(2)}</p>
-    </div>
+    </motion.div>
   );
 }

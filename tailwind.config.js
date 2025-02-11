@@ -34,6 +34,10 @@ export default {
         opacity: "opacity 0.85s  forwards ease-in-out",
       },
 
+      scale: {
+        115: "1.15",
+      },
+
       screens: {
         one: "1290px",
         two: "1000px",
