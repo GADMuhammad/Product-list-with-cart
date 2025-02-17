@@ -9,7 +9,7 @@ function SuccessModal({ productsInCart, handleCloseModal }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
       className="z-10 w-[42vw] select-none overflow-hidden rounded-xl bg-rose50 px-6 py-10 outline-none max-one:w-[55vw] max-two:w-[70vw] max-there:w-[90vw] max-md:px-4 max-sm:w-[98vw]"
-      open
+      open layout
     >
       <img src="images/icon-order-confirmed.svg" alt="Order Confirmed Mark" />
       <h2 className="pb-2 pt-5 text-3xl font-bold tracking-wide">
