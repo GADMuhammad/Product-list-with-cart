@@ -13,19 +13,24 @@ export default function CartItemRow({ image, name, price, amountOfProductInCart 
       transition={{ type: "spring" }}
       className="border-b-solid grid grid-cols-6 grid-rows-2 border-b-2 border-b-rose300 py-2"
     >
-      <motion.img
-        onLoad={() => setImageLoaded(true)}
-        initial={false}
-        animate={
-          imageLoaded
-            ? { opacity: 1, scale: 1, rotate: 0 }
-            : { opacity: 0, scale: 0, rotate: -25 }
-        }
-        transition={{ type: "spring", stiffness: 260, damping: 15 }}
-        src={image.thumbnail}
-        alt="image thumbnail"
-        className="row-span-2 h-16 w-16 rounded-xl object-cover"
-      />
+      <div className="relative row-span-2 h-16 w-16">
+        {!imageLoaded && (
+          <div className="absolute inset-0 h-16 w-16 animate-pulse rounded-xl bg-rose300" />
+        )}
+        <motion.img
+          onLoad={() => setImageLoaded(true)}
+          initial={false}
+          animate={
+            imageLoaded
+              ? { opacity: 1, scale: 1, rotate: 0 }
+              : { opacity: 0, scale: 0, rotate: -25 }
+          }
+          transition={{ type: "spring", stiffness: 260, damping: 15 }}
+          src={image.thumbnail}
+          alt="image thumbnail"
+          className="absolute inset-0 h-16 w-16 rounded-xl object-cover"
+        />
+      </div>
       <h3 className="max-sm: col-span-4 font-medium max-sm:self-center max-sm:justify-self-center">
         {name}
       </h3>
