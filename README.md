@@ -1,6 +1,6 @@
 # Product List with Cart
 
-A responsive dessert-shop product list and shopping cart, built as a solution to the [Frontend Mentor "Product list with cart" challenge](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqvBvyJc).
+A responsive dessert-shop product list and shopping cart, built as a solution to the [Frontend Mentor "Product list with cart" challenge](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d).
 
 ![Preview](public/design/preview.jpg)
 
@@ -69,7 +69,3 @@ npm run build
 # preview the production build
 npm run preview
 ```
-
-## Acknowledgments
-
-Challenge and designs by [Frontend Mentor](https://www.frontendmentor.io).
