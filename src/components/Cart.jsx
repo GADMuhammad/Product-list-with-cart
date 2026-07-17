@@ -137,7 +137,7 @@ export default function Cart({ products }) {
               alt="illustration for empty cart"
             />
             <p className="mb-4 animate-opacity text-center font-medium tracking-wide text-rose500">
-              Your added items will appear hear
+              Your added items will appear here
             </p>
           </>
         )}

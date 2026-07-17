@@ -23,17 +23,15 @@ export default function ProductsTemplate({ product, index }) {
       <figure
         className={`mb-4 overflow-hidden rounded-xl border-2 border-solid transition-colors duration-1000 ${amountOfProductInCart ? "border-redMain" : "border-transparent"}`}
       >
-        <img
-          className="hover:scale-115 transition-transform duration-1000"
-          src={
-            window.innerWidth <= 768
-              ? image.mobile
-              : window.innerWidth <= 1024
-                ? image.tablet
-                : image.desktop
-          }
-          alt={`Image of number ${index + 1} product`}
-        />
+        <picture>
+          <source media="(min-width: 1025px)" srcSet={image.desktop} />
+          <source media="(min-width: 769px)" srcSet={image.tablet} />
+          <img
+            className="hover:scale-115 transition-transform duration-1000"
+            src={image.mobile}
+            alt={`Image of number ${index + 1} product`}
+          />
+        </picture>
       </figure>
       {amountOfProductInCart ? (
         <div
