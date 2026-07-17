@@ -65,13 +65,13 @@ export default function Cart({ products }) {
         {productsInCart?.length ? (
           <>
             <AnimatePresence>
-              {productsInCart.map(({ name, price, amountOfProductInCart }) => (
+              {productsInCart.map(({ id, name, price, amountOfProductInCart }) => (
                 <motion.div
                   transition={{ type: "spring", stiffness: 325 }}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, transition: { type: "tween" } }}
-                  key={name}
+                  key={id}
                   className="border-b-solid grid grid-cols-5 border-b-2 border-b-rose100 pb-2 pr-1"
                 >
                   <h3 className="col-span-5 mb-1 pt-4 font-medium">{name}</h3>
@@ -83,13 +83,7 @@ export default function Cart({ products }) {
                     ${(amountOfProductInCart * price).toFixed(2)}
                   </span>
                   <button
-                    onClick={() =>
-                      updateProducts(
-                        "change",
-                        products.findIndex((product) => product.name === name),
-                        0,
-                      )
-                    }
+                    onClick={() => updateProducts("change", id, 0)}
                     className="col-span-2 my-auto ml-auto"
                   >
                     <ion-icon name="close-circle-outline" />

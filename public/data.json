@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "image": {
       "thumbnail": "images/image-waffle-thumbnail.jpg",
       "mobile": "images/image-waffle-mobile.jpg",
@@ -12,6 +13,7 @@
     "amountOfProductInCart": 0
   },
   {
+    "id": 2,
     "image": {
       "thumbnail": "images/image-creme-brulee-thumbnail.jpg",
       "mobile": "images/image-creme-brulee-mobile.jpg",
@@ -20,10 +22,11 @@
     },
     "name": "Vanilla Bean Crème Brûlée",
     "category": "Crème Brûlée",
-    "price": 7.0,
+    "price": 7,
     "amountOfProductInCart": 0
   },
   {
+    "id": 3,
     "image": {
       "thumbnail": "images/image-macaron-thumbnail.jpg",
       "mobile": "images/image-macaron-mobile.jpg",
@@ -32,10 +35,11 @@
     },
     "name": "Macaron Mix of Five",
     "category": "Macaron",
-    "price": 8.0,
+    "price": 8,
     "amountOfProductInCart": 0
   },
   {
+    "id": 4,
     "image": {
       "thumbnail": "images/image-tiramisu-thumbnail.jpg",
       "mobile": "images/image-tiramisu-mobile.jpg",
@@ -48,6 +52,7 @@
     "amountOfProductInCart": 0
   },
   {
+    "id": 5,
     "image": {
       "thumbnail": "images/image-baklava-thumbnail.jpg",
       "mobile": "images/image-baklava-mobile.jpg",
@@ -56,10 +61,11 @@
     },
     "name": "Pistachio Baklava",
     "category": "Baklava",
-    "price": 4.0,
+    "price": 4,
     "amountOfProductInCart": 0
   },
   {
+    "id": 6,
     "image": {
       "thumbnail": "images/image-meringue-thumbnail.jpg",
       "mobile": "images/image-meringue-mobile.jpg",
@@ -68,10 +74,11 @@
     },
     "name": "Lemon Meringue Pie",
     "category": "Pie",
-    "price": 5.0,
+    "price": 5,
     "amountOfProductInCart": 0
   },
   {
+    "id": 7,
     "image": {
       "thumbnail": "images/image-cake-thumbnail.jpg",
       "mobile": "images/image-cake-mobile.jpg",
@@ -84,6 +91,7 @@
     "amountOfProductInCart": 0
   },
   {
+    "id": 8,
     "image": {
       "thumbnail": "images/image-brownie-thumbnail.jpg",
       "mobile": "images/image-brownie-mobile.jpg",
@@ -96,6 +104,7 @@
     "amountOfProductInCart": 0
   },
   {
+    "id": 9,
     "image": {
       "thumbnail": "images/image-panna-cotta-thumbnail.jpg",
       "mobile": "images/image-panna-cotta-mobile.jpg",

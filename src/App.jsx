@@ -4,13 +4,17 @@ import Cart from "./components/Cart";
 
 export const UpdateProducts = createContext();
 
+const isValidCache = (data) => Array.isArray(data) && data.length > 0 && data.every((product) => "id" in product);
+
 function App() {
-  const [products, setProducts] = useState(
-    () => JSON.parse(localStorage.getItem("productsDetails")) || [],
-  );
+  const [products, setProducts] = useState(() => {
+    const cached = JSON.parse(localStorage.getItem("productsDetails"));
+    return isValidCache(cached) ? cached : [];
+  });
 
   useEffect(() => {
-    if (!localStorage.getItem("productsDetails")) {
+    const cached = JSON.parse(localStorage.getItem("productsDetails"));
+    if (!isValidCache(cached)) {
       fetch("/data.json")
         .then((response) => response.json())
         .then((data) => setProducts(data))
@@ -24,30 +28,26 @@ function App() {
     }
   }, [products]);
 
-  const updateProducts = (action, index, number) => {
+  const updateProducts = (action, id, number) => {
     setProducts((prevProducts) => {
-      const updatedData = [...prevProducts];
-
       switch (action) {
         case "change":
-          {
-            const theClickedProduct = updatedData[index]; // the product I wanna edit
-            updatedData[index] = {
-              ...theClickedProduct,
-              amountOfProductInCart: number
-                ? theClickedProduct.amountOfProductInCart + number
-                : 0,
-            };
-          }
-          break;
-        case "reset":
-          updatedData.forEach(
-            (product) => (product.amountOfProductInCart = 0),
+          return prevProducts.map((product) =>
+            product.id === id
+              ? {
+                  ...product,
+                  amountOfProductInCart: number ? product.amountOfProductInCart + number : 0,
+                }
+              : product,
           );
-          break;
+        case "reset":
+          return prevProducts.map((product) => ({
+            ...product,
+            amountOfProductInCart: 0,
+          }));
+        default:
+          return prevProducts;
       }
-
-      return updatedData;
     });
   };
 

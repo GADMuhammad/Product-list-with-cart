@@ -16,7 +16,7 @@ export default function Products({ products }) {
       >
         {products?.map((product, index) => (
           <ProductsTemplate
-            key={product.name}
+            key={product.id}
             product={product}
             index={index}
           />

@@ -26,35 +26,37 @@ function SuccessModal({ productsInCart, handleCloseModal }) {
         animate="visible"
         className="mx-auto flex h-fit flex-col justify-between rounded-xl bg-rose100 px-5 py-4 max-md:px-2"
       >
-        {productsInCart.map(({ image, name, price, amountOfProductInCart }) => (
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, scale: 0.5 },
-              visible: { opacity: 1, scale: 1 },
-            }}
-            transition={{ type: "spring" }}
-            key={name}
-            className="border-b-solid grid grid-cols-6 grid-rows-2 border-b-2 border-b-rose300 py-2"
-          >
-            <img
-              src={image.thumbnail}
-              alt="image thumbnail"
-              className="row-span-2 h-16 w-16 rounded-xl"
-            />
-            <h3 className="max-sm: col-span-4 font-medium max-sm:self-center max-sm:justify-self-center">
-              {name}
-            </h3>
-            <span className="col-span-1 row-span-2 ml-auto self-center font-semibold tracking-wide text-rose900 max-sm:self-end">
-              ${(amountOfProductInCart * price).toFixed(2)}
-            </span>
-            <span className="font-semibold text-redMain max-sm:justify-self-center">
-              {amountOfProductInCart}x
-            </span>
-            <span className="text-gray max-sm:justify-self-center">
-              ${price.toFixed(2)}
-            </span>
-          </motion.div>
-        ))}
+        {productsInCart.map(
+          ({ id, image, name, price, amountOfProductInCart }) => (
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, scale: 0.5 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              transition={{ type: "spring" }}
+              key={id}
+              className="border-b-solid grid grid-cols-6 grid-rows-2 border-b-2 border-b-rose300 py-2"
+            >
+              <img
+                src={image.thumbnail}
+                alt="image thumbnail"
+                className="row-span-2 h-16 w-16 rounded-xl"
+              />
+              <h3 className="max-sm: col-span-4 font-medium max-sm:self-center max-sm:justify-self-center">
+                {name}
+              </h3>
+              <span className="col-span-1 row-span-2 ml-auto self-center font-semibold tracking-wide text-rose900 max-sm:self-end">
+                ${(amountOfProductInCart * price).toFixed(2)}
+              </span>
+              <span className="font-semibold text-redMain max-sm:justify-self-center">
+                {amountOfProductInCart}x
+              </span>
+              <span className="text-gray max-sm:justify-self-center">
+                ${price.toFixed(2)}
+              </span>
+            </motion.div>
+          ),
+        )}
         <div className="flex items-center justify-between pt-4">
           <h6 className="text-gray">Order Total</h6>
           <h3 className="text-2xl font-bold tracking-wide">
