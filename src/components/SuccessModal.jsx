@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { createPortal } from "react-dom";
 import CartItemRow from "./CartItemRow";
 
 function SuccessModal({ productsInCart, handleCloseModal }) {
+  const [iconLoaded, setIconLoaded] = useState(false);
+
   return createPortal(
     <motion.dialog
       transition={{ duration: 0.3 }}
@@ -13,7 +16,20 @@ function SuccessModal({ productsInCart, handleCloseModal }) {
       open
       layout
     >
-      <img src="images/icon-order-confirmed.svg" alt="Order Confirmed Mark" />
+      <div className="relative h-12 w-12">
+        {!iconLoaded && (
+          <div className="absolute inset-0 h-12 w-12 animate-pulse rounded-full bg-rose300" />
+        )}
+        <motion.img
+          onLoad={() => setIconLoaded(true)}
+          initial={false}
+          animate={iconLoaded ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+          transition={{ type: "spring", stiffness: 260, damping: 15 }}
+          src="images/icon-order-confirmed.svg"
+          alt="Order Confirmed Mark"
+          className="absolute inset-0 h-12 w-12"
+        />
+      </div>
       <h2 className="pb-2 pt-5 text-3xl font-bold tracking-wide">Order Confirmed</h2>
       <p className="pb-6 text-gray">We hope you enjoy your food!</p>
 
